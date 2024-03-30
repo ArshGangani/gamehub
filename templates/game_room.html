@@ -1,0 +1,263 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Room</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        /* Add your custom CSS styles here */
+/* Custom CSS styles */
+
+/* Navbar */
+.navbar {
+    background-color: #007bff; /* Primary blue background */
+}
+
+.navbar-brand {
+    color: #fff; /* White text color */
+}
+
+.navbar-toggler-icon {
+    background-color: #fff; /* White color for toggler icon */
+}
+
+
+/* Chat container */
+.chat__container {
+    max-width: 800px; /* Set maximum width for chat container */
+    margin: 20px auto; /* Center chat container horizontally with some top margin */
+    padding: 20px; /* Add padding around chat container */
+    border: 1px solid #949494; /* Gray border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #4c4c4c; /* Light gray background */
+}
+
+/* Matrix box */
+.matrix-box {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Vertically align items */
+    justify-content: center; /* Horizontally align items */
+    height: 100px; /* Set height */
+    width: 100px; /* Set width */
+    margin: 5px; /* Add margin */
+    border: 4px solid #343a40; /* Dark gray border */
+    font-size: 24px; /* Increase font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Add pointer cursor */
+    background-color: #cefffe; /* White background */
+    color: #000000; /* Primary blue color for text */
+}
+
+
+/* Chat messages */
+.chat__messages {
+    margin-bottom: 20px; /* Add margin at the bottom */
+    padding: 10px; /* Add padding */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #d7d7d7; /* White background */
+    color: #333; /* Dark gray color for text */
+}
+
+/* Chat input container */
+.chat__input_container {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Align items vertically */
+}
+
+/* Chat input */
+.chat__input {
+    flex: 1; /* Take remaining width */
+    margin-right: 10px; /* Add right margin */
+    padding: 8px; /* Add padding */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+}
+
+/* Chat button */
+.chat__button {
+    padding: 8px 20px; /* Add padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #007bff; /* Primary blue background */
+    color: #fff; /* White text color */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Add pointer cursor */
+}
+/* Chat container */
+.chat__container {
+    max-width: 600px; /* Set maximum width for chat container */
+    margin: 20px auto; /* Center chat container horizontally with some top margin */
+    padding: 20px; /* Add padding around chat container */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light gray background */
+}
+
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-
+    target="#navbarText" aria-controls="navbarText" aria-expanded="False" aria-
+    label="Toggle navigation">    
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="logout">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="login">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <br><br>
+    <div class="container mt-1">
+        <h2 class="text-center alert alert-info mb-5 border border-4 rounded-5 border-success p-10">Play Game Here</h2>
+        <div class="my-auto">
+            <div class="d-flex justify-content-center">
+                <div id="1" onclick="func(1)" class="matrix-box border-bottom border-end border-4 border-dark text-center align-middle fs-1 fw-bold p-3"></div>
+                <div id="2" onclick="func(2)" class="matrix-box border-bottom border-end border-4 border-dark text-center align-middle fs-1 fw-bold p-3"></div>
+                <div id="3" onclick="func(3)" class="matrix-box border-bottom border-4 border-dark text-center align-middle fs-1 fw-bold p-3"></div>
+            </div>
+            <div class="d-flex align-items-center justify-content-center">
+                <div id="4" onclick="func(4)" class="matrix-box border-bottom border-end border-4 border-dark text-center align-middle fs-1 fw-bold p-3"></div>
+                <div id="5" onclick="func(5)" class="matrix-box border-bottom border-end border-4 border-dark text-center align-middle fs-1 fw-bold p-3"></div>
+                <div id="6" onclick="func(6)" class="matrix-box border-bottom border-4 border-dark text-center align-middle fs-1 fw-bold p-3"></div>
+            </div>
+            <div class="d-flex align-items-center justify-content-center">
+                <div id="7" onclick="func(7)" class="matrix-box border-end border-4 border-dark text-center align-middle fs-1 fw-bold p-3"></div>
+                <div id="8" onclick="func(8)" class="matrix-box border-end border-4 border-dark text-center align-middle fs-1 fw-bold p-3"></div>
+                <div id="9" onclick="func(9)" class="matrix-box text-center align-middle fs-1 fw-bold p-3"></div>
+            </div>
+        </div>    
+    </div>
+    <div class="chat__container border-success border border-4 rounded-5 ">
+        <h1>Chat</h1>
+        <!-- Chat messages -->
+        <div class="chat__messages" id="chatMessages"></div>
+        
+        <!-- Chat input -->
+        <div class="chat__input_container">
+            <input type="text" id="messageInput" class="chat__input" placeholder="Type your message here...">
+            <button type="button" id="sendMessageButton" class="chat__button">Send</button>
+        </div>
+    </div>
+
+    <button id="result" type="button" class="btn btn-primary btn-sm invisible" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Game Results...!!!</h1>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" href='/'>Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add your game interface and other scripts here -->
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const sendMessageButton = document.getElementById('sendMessageButton');
+        const gameCode = '{{ game_room.game_code }}';
+        const playerName = '{{ request.user.username }}';
+        const iHaveGameCode = '{{ game_room.have_code }}';
+        const gameMatrixId = '{{ game_room.game_matrix_id }}';
+        console.log("gameCode" + " " + gameCode)
+        console.log("playerName" + playerName)
+        console.log("iHaveGameCode" + iHaveGameCode)
+        console.log(gameMatrixId + "gameMatrixId")
+        var ws = new WebSocket('ws://127.0.0.1:8000/ws/asc/pg/' + gameCode + '/' + gameMatrixId + '/' + playerName + '/' + iHaveGameCode + '/')
+        console.log(playerName)
+        let playerTurn='X'
+        let playerSymbol = 'X'
+        if (iHaveGameCode == 'on') {
+            playerSymbol = 'O'
+        }
+        const chatSocket = new WebSocket("ws://" + window.location.host + "/");
+        
+        chatSocket.onopen = function (event) {
+            console.log('WebSocket connection established.');
+        };
+
+        chatSocket.onmessage = function (event) {
+            const message = JSON.parse(event.data);
+            displayMessage(message);
+        };
+
+        sendMessageButton.addEventListener('click', function () {
+            var receiver = "{{ game_room.player2 }}";
+            if("{{request.user.username}}" == "{{ game_room.player2 }}") {
+                receiver = "{{game_room.player1}}"
+            }
+            const message = messageInput.value.trim();
+            if (message !== '') {
+                chatSocket.send(JSON.stringify({ message: message, username: "{{request.user.username}}",receiver:receiver }));
+                messageInput.value = '';
+            }
+        });
+
+        function displayMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = `${message.username}: ${message.message}`;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+
+
+        ws.onopen = function(){
+            console.log('connection established...')
+        }
+
+        function func(box_id){
+            let box_content = document.getElementById(box_id.toString()).textContent
+            console.log("playerTurn" + playerTurn + "playerSymbol" + playerSymbol + "playername" + playerName)
+            if(box_content == '' && playerTurn==playerSymbol){
+                ws.send(box_id)
+                console.log("inside box_id")
+            }    
+        }
+
+        ws.onmessage = function(event){
+            console.log("inside on message")
+            var data = JSON.parse(event.data)
+            if (data.msg_type == 'result') {
+                var result = (data.msg == 'game drawn') ? ('Game Drawn 😄😄') : (data.msg + ' Wins... 🥳🥳')
+                document.getElementsByClassName('modal-body')[0].textContent = result
+                document.getElementById('result').click()
+                console.log(data.msg)
+            }
+            else if(data.msg_type == 'chance'){
+
+                var symbol = data.symbol == 'null' ? 'X': 'O'
+                document.getElementById(data.position).textContent = symbol
+                if(playerTurn=='X') playerTurn='O'
+                else playerTurn='X'
+            }
+        }
+
+        ws.onerror = function (event) {
+            console.log('connection aborted...', event)
+        }
+    </script>
+</body>

@@ -1,0 +1,61 @@
+<head>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        /* Custom CSS for Register Page */
+        body {
+            background-color: #f8f9fa; /* Set background color */
+        }
+
+        .container {
+            max-width: 400px; /* Set maximum width for the container */
+            margin:8em auto; /* Center the container horizontally */
+            padding: 20px; /* Add padding */
+            background-color: #fff; /* White background */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+        }
+
+        h1 {
+            text-align: center; /* Center the heading */
+            margin-bottom: 30px; /* Add space below the heading */
+            color: #007bff; /* Blue color for the heading */
+        }
+
+        button[type="submit"] {
+            width: 100%; /* Set button width to full */
+        }
+
+        p.text-center {
+            margin-top: 20px; /* Add space above the paragraph */
+            text-align: center; /* Center the paragraph */
+        }
+
+        p.text-center a {
+            color: #007bff; /* Blue color for the link */
+        }
+
+        p.text-center a:hover {
+            text-decoration: none; /* Remove underline on hover */
+        }
+
+        /* Remove instruction styles */
+        .field label small {
+            display: none;
+        }
+    </style>
+</head>
+
+{% block content %}
+<!--Register-->
+<div class="container mb-5">
+    <h1>Register</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ register_form.as_p }}
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+</div>
+{% endblock %}

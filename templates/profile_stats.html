@@ -1,0 +1,89 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Stats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 5em; /* Add top padding to accommodate fixed navbar */
+            background-image:url('/media/mateo-nCU4yq5xDEQ-unsplash.jpg');
+            background-size: cover;
+        }
+        .container {
+            margin-top: 10em;
+            max-width: 700px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0.8;
+        }
+        h1 {
+            text-align: center; /* Center the heading */
+            color: #007bff; /* Blue color for the heading */
+        }
+        ul.navbar-nav li.nav-item a.nav-link {
+            padding: 0.5rem 1rem; /* Adjust padding for navbar links */
+        }
+        ul.navbar-nav li.nav-item a.nav-link.navbar-brand {
+            padding: 0.5rem 0; /* Adjust padding for navbar brand */
+        }
+        ul {
+            list-style: none; /* Remove bullet points */
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px; /* Spacing between list items */
+        }
+        li span {
+            font-weight: bold;
+            color: #212529; /* Dark color for the stats */
+        }
+        nav{
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e9ecef;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!-- Adjust margin start to push menu to right -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile/{{ user.username }}">Welcome, {{ user.username }}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="login">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Profile Stats for {{ profile.Name.username }}</h1>
+        <ul>
+            <li>No. of Games Played: <span>{{ profile.No_of_games_played }}</span></li>
+            <li>No. of Games Won: <span>{{ profile.No_of_game_won }}</span></li>
+            <li>No. of Games Drawn: <span>{{ profile.No_of_game_draw }}</span></li>
+            <li>No. of Games Defeated: <span>{{ games_defeated }}</span></li>
+        </ul>
+    </div>
+</body>
+</html>

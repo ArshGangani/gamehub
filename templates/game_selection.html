@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Selection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            background-image: url('/media/mateo-nCU4yq5xDEQ-unsplash.jpg');
+            background-size: cover;
+        }
+        .container {
+            opacity: 0.8;
+            margin-top: 9em;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-check-label {
+            font-weight: normal;
+        }
+        #id_have_code {
+            margin-top: 10px;
+        }
+        .text-center { /* Center the heading */
+            text-align: center;
+        }
+        nav {
+            margin-top: -1.22em;
+            margin-left: -1.1em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e9ecef;">
+        <a class="navbar-brand" href="/">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile/{{ user.username }}">Welcome, {{ user.username }}</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="login">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="text-center">Select a Game and User</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_game">Select a Game:</label>
+                {{ form.game }}
+            </div>
+            <div class="form-group">
+                <label for="id_Opponent">Select an Opponent:</label>
+                {{ form.Opponent }}
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    {{ form.have_code }}
+                    <label class="form-check-label" for="id_have_code">Already have a code</label>
+                </div>
+            </div>
+            <div class="form-group" id="gameCodeField">
+                <label for="id_game_code">Enter Game Code:</label>
+                {{ form.game_code }}
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        window.onload = function() {
+            var haveCodeCheckbox = document.getElementById('id_have_code');
+            var gameField = document.getElementById('id_game');
+            var opponentField = document.getElementById('id_Opponent');
+    
+            haveCodeCheckbox.onchange = function() {
+                var isChecked = haveCodeCheckbox.checked;
+                opponentField.disabled = isChecked;
+            };
+        };
+    </script>
+</body>
+</html>
