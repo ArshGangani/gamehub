@@ -68,6 +68,11 @@
         <h1 class="text-center">Select a Game and User</h1>
         <form method="post">
             {% csrf_token %}
+            {% if error_message %}
+            <div class="alert alert-danger" role="alert">
+                {{ error_message }}
+            </div>
+            {% endif %}
             <div class="form-group">
                 <label for="id_game">Select a Game:</label>
                 {{ form.game }}
