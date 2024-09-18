@@ -11,7 +11,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
-            padding-top: 5em; /* Add top padding to accommodate fixed navbar */
+            padding-top: 5em; 
             background-image:url('/media/mateo-nCU4yq5xDEQ-unsplash.jpg');
             background-size: cover;
         }
@@ -25,25 +25,25 @@
             opacity: 0.8;
         }
         h1 {
-            text-align: center; /* Center the heading */
-            color: #007bff; /* Blue color for the heading */
+            text-align: center; 
+            color: #007bff; 
         }
         ul.navbar-nav li.nav-item a.nav-link {
-            padding: 0.5rem 1rem; /* Adjust padding for navbar links */
+            padding: 0.5rem 1rem; 
         }
         ul.navbar-nav li.nav-item a.nav-link.navbar-brand {
-            padding: 0.5rem 0; /* Adjust padding for navbar brand */
+            padding: 0.5rem 0; 
         }
         ul {
-            list-style: none; /* Remove bullet points */
+            list-style: none; 
             padding: 0;
         }
         li {
-            margin-bottom: 10px; /* Spacing between list items */
+            margin-bottom: 10px; 
         }
         li span {
             font-weight: bold;
-            color: #212529; /* Dark color for the stats */
+            color: #212529; 
         }
         nav{
             opacity: 0.8;
@@ -59,7 +59,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!-- Adjust margin start to push menu to right -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Logout</a>

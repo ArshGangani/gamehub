@@ -6,94 +6,87 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     <style>
-        /* Add your custom CSS styles here */
-/* Custom CSS styles */
-
-/* Navbar */
 .navbar {
-    background-color: #007bff; /* Primary blue background */
+    background-color: #007bff; 
 }
 
 .navbar-brand {
-    color: #fff; /* White text color */
+    color: #fff; 
 }
 
 .navbar-toggler-icon {
-    background-color: #fff; /* White color for toggler icon */
+    background-color: #fff; 
 }
 
 
-/* Chat container */
+
 .chat__container {
-    max-width: 800px; /* Set maximum width for chat container */
-    margin: 20px auto; /* Center chat container horizontally with some top margin */
-    padding: 20px; /* Add padding around chat container */
-    border: 1px solid #949494; /* Gray border */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #4c4c4c; /* Light gray background */
+    max-width: 800px; 
+    margin: 20px auto;
+    padding: 20px; 
+    border: 1px solid #949494; 
+    border-radius: 5px; 
+    background-color: #4c4c4c; 
 }
 
-/* Matrix box */
 .matrix-box {
-    display: flex; /* Use flexbox */
-    align-items: center; /* Vertically align items */
-    justify-content: center; /* Horizontally align items */
-    height: 100px; /* Set height */
-    width: 100px; /* Set width */
-    margin: 5px; /* Add margin */
-    border: 4px solid #343a40; /* Dark gray border */
-    font-size: 24px; /* Increase font size */
-    font-weight: bold; /* Bold text */
-    cursor: pointer; /* Add pointer cursor */
-    background-color: #cefffe; /* White background */
-    color: #000000; /* Primary blue color for text */
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    height: 100px; 
+    width: 100px;
+    margin: 5px;
+    border: 4px solid #343a40; 
+    font-size: 24px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    background-color: #cefffe; 
+    color: #000000;
 }
 
-
-/* Chat messages */
 .chat__messages {
-    margin-bottom: 20px; /* Add margin at the bottom */
-    padding: 10px; /* Add padding */
-    border: 1px solid #ccc; /* Gray border */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #d7d7d7; /* White background */
-    color: #333; /* Dark gray color for text */
+    margin-bottom: 20px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    background-color: #d7d7d7; 
+    color: #333; 
 }
 
-/* Chat input container */
+
 .chat__input_container {
-    display: flex; /* Use flexbox */
-    align-items: center; /* Align items vertically */
+    display: flex; 
+    align-items: center; 
 }
 
-/* Chat input */
+
 .chat__input {
-    flex: 1; /* Take remaining width */
-    margin-right: 10px; /* Add right margin */
-    padding: 8px; /* Add padding */
-    border: 1px solid #ccc; /* Gray border */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Font size */
+    flex: 1; 
+    margin-right: 10px; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 16px; 
 }
 
-/* Chat button */
+
 .chat__button {
-    padding: 8px 20px; /* Add padding */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #007bff; /* Primary blue background */
-    color: #fff; /* White text color */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Add pointer cursor */
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px; 
+    background-color: #007bff; 
+    color: #fff; 
+    font-size: 16px; 
+    cursor: pointer; 
 }
-/* Chat container */
+
 .chat__container {
-    max-width: 600px; /* Set maximum width for chat container */
-    margin: 20px auto; /* Center chat container horizontally with some top margin */
-    padding: 20px; /* Add padding around chat container */
-    border: 1px solid #ccc; /* Gray border */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #f9f9f9; /* Light gray background */
+    max-width: 600px; 
+    margin: 20px auto;
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #f9f9f9; 
 }
 
 </style>
@@ -172,7 +165,6 @@
         </div>
     </div>
 
-    <!-- Add your game interface and other scripts here -->
 
     <script>
         const chatMessages = document.getElementById('chatMessages');

@@ -49,15 +49,12 @@ def saveStat(game_code, result, player_name):
             player1_profile.save()
             player2_profile.save()
     except (game_room.DoesNotExist, User.DoesNotExist, ProfileStat.DoesNotExist):
-        # Handle cases where game room, user, or profile stat does not exist
         pass
 
 @database_sync_to_async
 def setup_game(game_code, game_matrix_id, player_name, player_type):
-    # Retrieve the User instance corresponding to the player's name
     player1 = User.objects.get(username=player_name)
 
-    # Retrieve the game_matrix_instance
     game_matrix_instance = game_matrix.objects.get(id=game_matrix_id)    
 
     if player_type == 'null':
@@ -67,7 +64,7 @@ def setup_game(game_code, game_matrix_id, player_name, player_type):
     elif player_type == 'on':
         game = game_room.objects.filter(game_code=game_code).first()
         if game:
-            game.Player2 = player_name  # Fix typo here from game.game_opponent to game.Player2
+            game.Player2 = player_name
             game.save()
         return game.id if game else None
 
